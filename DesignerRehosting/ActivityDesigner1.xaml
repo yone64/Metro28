@@ -1,0 +1,21 @@
+﻿<sap:ActivityDesigner x:Class="DesignerRehosting.ActivityDesigner1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+    xmlns:converters="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation">
+    <sap:ActivityDesigner.Resources>
+        <converters:ArgumentToExpressionConverter x:Key="ExpressionConverter" />
+
+    </sap:ActivityDesigner.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Message" />
+        <sapv:ExpressionTextBox Grid.Column="1" UseLocationExpression="False"
+                                Expression="{Binding Path=ModelItem.Text, Converter={StaticResource ExpressionConverter}, Mode=TwoWay, ConverterParameter=In}"
+                                OwnerActivity="{Binding ModelItem}"/>
+    </Grid>
+</sap:ActivityDesigner>

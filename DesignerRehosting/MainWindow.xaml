@@ -1,0 +1,38 @@
+﻿<Window x:Class="DesignerRehosting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolbox="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation/toolbox"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Padding="5">
+            <MenuItem Header="File(_F)">
+                <MenuItem Header="New(_N)" Click="New_OnClick" />
+                <MenuItem Header="Open(_O)" Click="Open_OnClick"/>
+                <MenuItem Header="Save(_S)" Click="Save_OnClick"/>
+            </MenuItem>
+            <MenuItem Header="Debug">
+                <MenuItem Header="Run" Click="Run_OnClick"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="3"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <GridSplitter Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+            <toolbox:ToolboxControl x:Name="ToolboxControl"/>
+            <ContentControl Grid.Column="2" Content="{Binding Designer.View, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+            <ContentControl Grid.Column="4" Content="{Binding Designer.PropertyInspectorView, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+        </Grid>
+    </Grid>
+</Window>
